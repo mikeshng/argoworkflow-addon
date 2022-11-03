@@ -1,0 +1,46 @@
+apiVersion: work.open-cluster-management.io/v1
+kind: ManifestWork
+metadata:
+  name: hello-world-multicluster-eeb3f
+  namespace: cluster1
+spec:
+  manifestConfigs:
+  - feedbackRules:
+    - jsonPaths:
+      - name: phase
+        path: .status.phase
+      type: JSONPaths
+    resourceIdentifier:
+      group: argoproj.io
+      name: hello-world-multicluster
+      namespace: default
+      resource: workflows
+  workload:
+    manifests:
+    - apiVersion: argoproj.io/v1alpha1
+      kind: Workflow
+      metadata:
+        annotations:
+          workflows.argoproj.io/description: |
+            This is a simple hello world example.
+            You can also run it in Python: https://couler-proj.github.io/couler/examples/#hello-world
+        labels:
+          workflows.argoproj.io/archive-strategy: "false"
+        name: hello-world-multicluster
+        namespace: default
+      spec:
+        arguments: {}
+        entrypoint: whalesay
+        templates:
+        - container:
+            args:
+            - hello world
+            command:
+            - cowsay
+            image: docker/whalesay:latest
+            name: ""
+            resources: {}
+          inputs: {}
+          metadata: {}
+          name: whalesay
+          outputs: {}

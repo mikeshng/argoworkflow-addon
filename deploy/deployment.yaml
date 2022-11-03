@@ -1,0 +1,24 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: argoworkflow-addon-controller
+  namespace: open-cluster-management
+  labels:
+    app: argoworkflow-addon-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argoworkflow-addon-controller
+  template:
+    metadata:
+      labels:
+        app: argoworkflow-addon-controller
+    spec:
+      serviceAccountName: argoworkflow-addon-sa
+      containers:
+      - name: argoworkflow-addon-controller
+        image: docker.io/mikeshng/argoworkflow-addon:latest
+        imagePullPolicy: IfNotPresent
+        args:
+          - "controller"

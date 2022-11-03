@@ -1,0 +1,8 @@
+apiVersion: addon.open-cluster-management.io/v1alpha1
+kind: ClusterManagementAddOn
+metadata:
+  name: argoworkflow
+spec:
+  addOnMeta:
+    displayName: ArgoWorkflow
+    description: ArgoWorkflow is an ArgoWorkflow add-on
