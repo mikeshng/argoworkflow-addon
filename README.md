@@ -1,4 +1,7 @@
 # argoworkflow-addon
+** Now bundled in https://github.com/mikeshng/argo-workflow-multicluster **
+
+
 PoC ArgoWorkflow Addon for Open Cluster Management (OCM).
 
 By applying this add-on to your OCM hub cluster, automatically Argo Workflow installation will be applied to all your `managed` (`spoke`) clusters and all your to be registered `managed` (`spoke`) clusters.
